@@ -1,0 +1,14 @@
+<section [routerLink]="['/contact/',contact._id]" class="contact-preview">
+    <section class="info">
+        <section class="data">
+            <p>Name: {{contact.name}}</p>
+            <p>phone: {{contact.phone}}</p>
+            <p>email: {{contact.email}}</p>
+        </section>
+        <section class="actions">
+            <button (click)="onRemoveContact($event)" class="remove-btn">X</button>
+            <button (click)="onEditContact($event)">Edit</button>
+        </section>
+    </section>
+    <img src="https://robohash.org/{{contact._id}}?set=set4" alt="">
+</section>

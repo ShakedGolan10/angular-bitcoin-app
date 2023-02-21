@@ -1,0 +1,21 @@
+.home-page {
+    margin-top: 5px;
+    padding: 20px;
+    background-color: #ffb3a3;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px #ada8a8;
+
+    .user-info {
+        display: grid;
+
+        span {
+            font-weight: bold;
+        }
+    }
+
+    .bitcoin-rate {
+        span {
+            font-weight: bold;
+        }
+    }
+}
