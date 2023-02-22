@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactEditComponent } from './cmps/contact-edit/contact-edit.component';
+import { environment } from './environments/environment';
 import { ContactResolver } from './services/contact.resolver';
 import { ContactDetailsComponent } from './views/contact-details/contact-details.component';
 import { ContactIndexComponent } from './views/contact-index/contact-index.component';
@@ -22,7 +23,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: environment?.production })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
