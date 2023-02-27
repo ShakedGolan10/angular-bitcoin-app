@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { fromEvent, map, Observable } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contact.service';
 
@@ -15,10 +15,12 @@ export class ContactIndexComponent implements OnInit {
   contacts$!: Observable<Contact[]>
 
 
+
+
+
   ngOnInit(): void {
-    this.contactService.loadContacts({ term: '' })
+    this.contactService.loadContacts()
     this.contacts$ = this.contactService.contacts$
-    console.log(this.contacts$)
   }
 
   onRemoveContact(contactId: string) {

@@ -1,0 +1,11 @@
+<form class="contact-filter">
+    <label for="name">Enter a name</label>
+    <input [(ngModel)]="contactFilter.name" (ngModelChange)="onSetFilter()" name="name" type="text" id="name"
+        placeholder="Search by name">
+    <label for="phone">Enter a phone</label>
+    <input [(ngModel)]="contactFilter.phone" (ngModelChange)="onSetFilter()" name="phone" type="text" id="phone"
+        placeholder="Search by phone">
+    <label for="email">Enter an email</label>
+    <input [(ngModel)]="contactFilter.email" (ngModelChange)="onSetFilter()" name="email" type="text" id="email"
+        placeholder="Search by email">
+</form>

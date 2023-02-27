@@ -11,6 +11,7 @@ import { ContactListComponent } from './cmps/contact-list/contact-list.component
 import { ContactPreviewComponent } from './cmps/contact-preview/contact-preview.component';
 import { ContactDetailsComponent } from './views/contact-details/contact-details.component';
 import { ContactEditComponent } from './cmps/contact-edit/contact-edit.component';
+import { ContactFilterComponent } from './cmps/contact-filter/contact-filter.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ContactEditComponent } from './cmps/contact-edit/contact-edit.component
     ContactPreviewComponent,
     ContactDetailsComponent,
     ContactEditComponent,
+    ContactFilterComponent,
   ],
   imports: [
     BrowserModule,

@@ -133,21 +133,39 @@ export class ContactService {
     private _contacts$ = new BehaviorSubject<Contact[]>([])
     public contacts$ = this._contacts$.asObservable()
 
+    private _contactFilter$ = new BehaviorSubject<Contact>(this.getDefaultFilter())
+    public contactFilter$ = this._contactFilter$.asObservable()
     constructor() {
     }
 
     public getEmptyContact() {
         return { name: '', phone: '', email: '' }
+
     }
 
-    public loadContacts(filterBy: { term: string }): void {
+    public getDefaultFilter() {
+        return { name: '', phone: '', email: '' }
+    }
+
+    public loadContacts(): void {
         let contacts = this._contactsDb;
-        if (filterBy && filterBy.term) {
-            contacts = this._filter(contacts, filterBy.term)
+        let filterBy = this._contactFilter$.value
+        if (filterBy && filterBy.name) {
+            contacts = this._filter(contacts, filterBy.name)
+        }
+        if (filterBy && filterBy.email) {
+            contacts = this._filter(contacts, filterBy.email)
+        }
+        if (filterBy && filterBy.phone) {
+            contacts = this._filter(contacts, filterBy.phone)
         }
         this._contacts$.next(this._sort(contacts))
     }
 
+    public setFilter(contactFilter: Contact) {
+        this._contactFilter$.next(contactFilter)
+        this.loadContacts()
+    }
 
     public getContactById(id: string): Observable<Contact> {
         //mock the server work
