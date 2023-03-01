@@ -11,7 +11,12 @@ import { UserService } from '../services/user.service';
 export class AppComponent {
 
 
+  authModal: boolean = false
 
-
-
+  onOpenModal() {
+    this.authModal = true
+  }
+  onCloseModal() {
+    this.authModal = false
+  }
 }

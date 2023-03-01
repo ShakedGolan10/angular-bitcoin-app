@@ -25,7 +25,6 @@ export class ContactFilterComponent implements OnInit, OnDestroy {
 
   onSetFilter() {
     this.contactService.setFilter({ ...this.contactFilter })
-    console.log(this.subscription)
   }
 
 }

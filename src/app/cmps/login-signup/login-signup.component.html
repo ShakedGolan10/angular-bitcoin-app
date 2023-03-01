@@ -1,0 +1,39 @@
+<div class="back-screen"></div>
+<section class="login-signup-form">
+
+
+    <button class="close-model-btn" (click)="onCloseModal($event)">X</button>
+
+    <form class="login-form" *ngIf="login" #form="ngForm" (ngSubmit)="onLogin(form)">
+        <label for="username">Enter your username</label>
+        <input placeholder="username" ngModel type="text" name="username" id="username">
+
+        <label for="password">Enter your password</label>
+        <input class="password-input" placeholder="password" ngModel type="password" name="password" id="password">
+
+        <button>Login</button>
+    </form>
+
+    <form class="signup-form" *ngIf="!login" #form="ngForm" (ngSubmit)="onSignup(form)">
+        <label for="fullname">Enter your full name</label>
+        <input placeholder="fullname" ngModel type="text" name="fullname" id="fullname">
+
+        <label for="username">Enter your username</label>
+        <input placeholder="username" ngModel type="text" name="username" id="username">
+
+        <label for="password">Enter your password</label>
+        <input class="password-input" placeholder="password" ngModel type="password" name="password" id="password">
+
+        <label for="password-validate">Enter your password again</label>
+        <input class="password-input" placeholder="password" ngModel type="password" name="passwordValidate"
+            id="passwordValidate">
+        <span class="error-msg">{{errorMsg}}</span>
+
+        <label for="bitcoin">Enter your bitcoin amount</label>
+        <input placeholder="bitcoin" ngModel type="text" name="balance" id="bitcoin">
+
+        <button>Signup</button>
+    </form>
+    <button class="change-to-btn" *ngIf="login" (click)="changeState()">Dont have a user? Signup!</button>
+    <button class="change-to-btn" *ngIf="!login" (click)="changeState()">Already has a user? Login!</button>
+</section>

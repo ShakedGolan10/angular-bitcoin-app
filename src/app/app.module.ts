@@ -12,6 +12,8 @@ import { ContactPreviewComponent } from './cmps/contact-preview/contact-preview.
 import { ContactDetailsComponent } from './views/contact-details/contact-details.component';
 import { ContactEditComponent } from './cmps/contact-edit/contact-edit.component';
 import { ContactFilterComponent } from './cmps/contact-filter/contact-filter.component';
+import { LoginSignupComponent } from './cmps/login-signup/login-signup.component';
+import { UserMsgComponent } from './cmps/user-msg/user-msg.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { ContactFilterComponent } from './cmps/contact-filter/contact-filter.com
     ContactDetailsComponent,
     ContactEditComponent,
     ContactFilterComponent,
+    LoginSignupComponent,
+    UserMsgComponent,
   ],
   imports: [
     BrowserModule,

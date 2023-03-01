@@ -1,0 +1,60 @@
+.login-signup-form {
+    // display: flex;
+    position: fixed;
+
+    background-color: white;
+    z-index: 99;
+
+    min-height: 500px;
+    min-width: 400px;
+    box-shadow: 2px black;
+    border-radius: 12px;
+    bottom: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close-model-btn {
+    position: relative;
+
+
+}
+
+.error-msg {
+    color: red;
+}
+
+.back-screen {
+    background-color: #000;
+    cursor: pointer;
+    height: 100vh;
+    left: 0;
+    opacity: 50%;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 98;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.change-to-btn {
+    position: relative;
+    top: 30px;
+    left: 105px;
+}

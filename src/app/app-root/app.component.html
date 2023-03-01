@@ -7,12 +7,16 @@
 
             <nav>
                 <a class="contact-btn" routerLink="/contact"> Go to your Contacts!</a>
+                <button (click)="onOpenModal()">Login/Signup</button>
             </nav>
         </section>
     </header>
 
     <main>
+        <login-signup *ngIf="authModal" (close)="onCloseModal()"></login-signup>
         <router-outlet></router-outlet>
     </main>
+
+    <user-msg></user-msg>
 
 </section>
