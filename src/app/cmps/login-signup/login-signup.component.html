@@ -6,7 +6,7 @@
 
     <form class="login-form" *ngIf="login" #form="ngForm" (ngSubmit)="onLogin(form)">
         <label for="username">Enter your username</label>
-        <input placeholder="username" ngModel type="text" name="username" id="username">
+        <input placeholder="username" ngModel type="text" name="userName" id="userName">
 
         <label for="password">Enter your password</label>
         <input class="password-input" placeholder="password" ngModel type="password" name="password" id="password">
@@ -15,11 +15,11 @@
     </form>
 
     <form class="signup-form" *ngIf="!login" #form="ngForm" (ngSubmit)="onSignup(form)">
-        <label for="fullname">Enter your full name</label>
-        <input placeholder="fullname" ngModel type="text" name="fullname" id="fullname">
+        <label for="name">Enter your full name</label>
+        <input placeholder="fullname" ngModel type="text" name="name" id="name">
 
         <label for="username">Enter your username</label>
-        <input placeholder="username" ngModel type="text" name="username" id="username">
+        <input placeholder="username" ngModel type="text" name="userName" id="userName">
 
         <label for="password">Enter your password</label>
         <input class="password-input" placeholder="password" ngModel type="password" name="password" id="password">
@@ -29,8 +29,8 @@
             id="passwordValidate">
         <span class="error-msg">{{errorMsg}}</span>
 
-        <label for="bitcoin">Enter your bitcoin amount</label>
-        <input placeholder="bitcoin" ngModel type="text" name="balance" id="bitcoin">
+        <label for="bitcoin">Enter your bitcoin balance</label>
+        <input placeholder="bitcoin" ngModel type="text" name="coins" id="bitcoin">
 
         <button>Signup</button>
     </form>

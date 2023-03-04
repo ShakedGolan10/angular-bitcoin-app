@@ -1,4 +1,4 @@
-<section class="home-page">
+<section *ngIf="user$" class="home-page">
     <article class="user-info">
         <h3>User info</h3>
         <div><span>User:</span> {{user$.name}} </div>

@@ -10,7 +10,7 @@ import { UserService } from '../services/user.service';
 })
 export class AppComponent {
 
-
+  constructor(private userService: UserService) { }
   authModal: boolean = false
 
   onOpenModal() {
@@ -18,5 +18,9 @@ export class AppComponent {
   }
   onCloseModal() {
     this.authModal = false
+  }
+
+  onLogout() {
+    this.userService.logout()
   }
 }
