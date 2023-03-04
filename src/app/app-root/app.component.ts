@@ -8,10 +8,12 @@ import { UserService } from '../services/user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor(private userService: UserService) { }
   authModal: boolean = false
+  subscription!: Subscription
+  user$!: UserModel
 
   onOpenModal() {
     this.authModal = true
@@ -22,5 +24,9 @@ export class AppComponent {
 
   onLogout() {
     this.userService.logout()
+  }
+
+  ngOnInit(): void {
+    this.subscription = this.userService.user$.subscribe(user => this.user$ = user)
   }
 }

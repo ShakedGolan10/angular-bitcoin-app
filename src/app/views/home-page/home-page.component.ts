@@ -18,7 +18,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.bitcoinRate = this.bitcoinService.getRate()
-    this.subscription = this.userService.user$.subscribe(user => { this.user$ = user })
+    this.subscription = this.userService.user$.subscribe(user => this.user$ = user)
     this.userService.checkLoggedinUser()
     console.log(this.user$)
   }

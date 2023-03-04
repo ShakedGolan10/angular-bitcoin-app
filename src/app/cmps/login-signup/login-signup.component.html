@@ -6,12 +6,18 @@
 
     <form class="login-form" *ngIf="login" #form="ngForm" (ngSubmit)="onLogin(form)">
         <label for="username">Enter your username</label>
-        <input placeholder="username" ngModel type="text" name="userName" id="userName">
-
+        <input required placeholder="username" ngModel type="text" name="userName" id="userName" #userName="ngModel">
+        <p *ngIf="userName.touched && userName.invalid" class="errors">
+            <span *ngIf="userName.errors?.['required']">UserName is required!</span>
+        </p>
         <label for="password">Enter your password</label>
-        <input class="password-input" placeholder="password" ngModel type="password" name="password" id="password">
+        <input required class="password-input" placeholder="password" ngModel type="password" name="password"
+            id="password">
 
-        <button>Login</button>
+        <button type="submit" [disabled]="!form.valid">Login</button>
+
+        <span class="error-msg">{{errorMsg}}</span>
+
     </form>
 
     <form class="signup-form" *ngIf="!login" #form="ngForm" (ngSubmit)="onSignup(form)">

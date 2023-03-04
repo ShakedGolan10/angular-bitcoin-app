@@ -58,13 +58,17 @@ export class UserService {
   }
   public signup(user: emptyUser): any | void {
     let signupUser = user as any
+    signupUser = { ...signupUser, _id: this.makeId(), password: CryptoJS.AES.encrypt(signupUser.password, this.key, { iv: this.iv }).toString() }
+    this.save(signupUser)
+    this.saveLocalUser(signupUser)
+
+  }
+
+  public checkIfUsernameTaken(userName: string): boolean {
     let users = this.getUsers()
-    let checkIfUsernameTaken = users.find(currUser => currUser.userName === user.userName)
-    if (!checkIfUsernameTaken) {
-      signupUser = { ...signupUser, _id: this.makeId(), password: CryptoJS.AES.encrypt(signupUser.password, this.key, { iv: this.iv }).toString() }
-      this.save(signupUser)
-      this.saveLocalUser(signupUser)
-    } else return Promise.reject('There is a user with that username')
+    let checkIfUsernameTaken = users.find(currUser => currUser.userName === userName)
+    if (checkIfUsernameTaken) return false
+    else return true
   }
 
   public addMove(contact: Contact, amount: number) {
@@ -89,8 +93,6 @@ export class UserService {
 
   private save(user: emptyUser | UserModel): void {
     let users = this.getUsers()
-
-    console.log(user)
     users.push(user)
     this.saveToStorage(this.USER_STORAGE_KEY, users)
     this.saveLocalUser(user)
