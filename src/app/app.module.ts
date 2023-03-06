@@ -14,7 +14,9 @@ import { ContactEditComponent } from './cmps/contact-edit/contact-edit.component
 import { ContactFilterComponent } from './cmps/contact-filter/contact-filter.component';
 import { LoginSignupComponent } from './cmps/login-signup/login-signup.component';
 import { UserMsgComponent } from './cmps/user-msg/user-msg.component';
-import { TransferFundComponent } from './cmps/transfer.fund/transfer.fund.component';
+import { TransferFundComponent } from './cmps/transfer-fund/transfer-fund.component';
+import { TransferListComponent } from './cmps/transfer-list/transfer-list.component';
+import { TransferPreviewComponent } from './cmps/transfer-preview/transfer-preview.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { TransferFundComponent } from './cmps/transfer.fund/transfer.fund.compon
     LoginSignupComponent,
     UserMsgComponent,
     TransferFundComponent,
+    TransferListComponent,
+    TransferPreviewComponent,
   ],
   imports: [
     BrowserModule,

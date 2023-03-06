@@ -6,4 +6,7 @@
     <section>
         <button (click)="onBack()">Back</button>
     </section>
+
+    <transfer-fund (updateMoves)="updateMoves()" [user]="user" [contact]="contact"></transfer-fund>
+    <transfer-list *ngIf="moves.length" [moves]="moves"></transfer-list>
 </section>

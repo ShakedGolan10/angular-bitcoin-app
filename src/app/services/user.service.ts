@@ -31,7 +31,6 @@ export class UserService {
     if (sessionStorage.length) {
       let user = sessionStorage.getItem(this.STORAGE_KEY_LOGGEDIN_USER)
       this._user$.next(JSON.parse(user!))
-      console.log(this.user$)
     }
   }
 
@@ -58,7 +57,7 @@ export class UserService {
   }
   public signup(user: emptyUser): any | void {
     let signupUser = user as any
-    signupUser = { ...signupUser, _id: this.makeId(), password: CryptoJS.AES.encrypt(signupUser.password, this.key, { iv: this.iv }).toString() }
+    signupUser = { ...signupUser, _id: this.makeId(), password: CryptoJS.AES.encrypt(signupUser.password, this.key, { iv: this.iv }).toString(), moves: [], coins: +signupUser.coins }
     this.save(signupUser)
     this.saveLocalUser(signupUser)
 
@@ -72,18 +71,21 @@ export class UserService {
   }
 
   public addMove(contact: Contact, amount: number) {
-    const user: UserModel | any = this.user$
+    const user: UserModel | any = this.getUser()
     const move: Move = {
       toId: contact._id,
       to: contact.name,
       at: Date.now(),
       amount: amount
     } as Move
-
     user.moves.push(move)
     user.coins -= amount
     this.saveLocalUser(user)
     this.save(user)
+  }
+
+  public getUser(): UserModel {
+    return JSON.parse(sessionStorage.getItem(this.STORAGE_KEY_LOGGEDIN_USER) as string)
   }
 
   private saveLocalUser(user: UserModel) {
@@ -91,11 +93,17 @@ export class UserService {
     this._setUser(user)
   }
 
-  private save(user: emptyUser | UserModel): void {
+  private save(user: UserModel): void {
     let users = this.getUsers()
-    users.push(user)
-    this.saveToStorage(this.USER_STORAGE_KEY, users)
-    this.saveLocalUser(user)
+    let userIdx = users.findIndex(currUser => user._id === currUser._id)
+    if (userIdx !== -1) {
+      users[userIdx] = user
+      this.saveToStorage(this.USER_STORAGE_KEY, users)
+    } else {
+      users.push(user)
+      this.saveToStorage(this.USER_STORAGE_KEY, users)
+      this.saveLocalUser(user)
+    }
   }
 
   saveToStorage(key: string, value: any) {
