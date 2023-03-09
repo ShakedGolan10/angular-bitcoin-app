@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { fromEvent, map, Observable } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contact.service';
@@ -10,7 +11,7 @@ import { ContactService } from 'src/app/services/contact.service';
 })
 export class ContactIndexComponent implements OnInit {
 
-  constructor(private contactService: ContactService) { }
+  constructor(private contactService: ContactService, private route: ActivatedRoute) { }
 
   contacts$!: Observable<Contact[]>
 

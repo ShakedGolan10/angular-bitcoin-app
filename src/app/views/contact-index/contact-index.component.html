@@ -1,16 +1,8 @@
-<section class="contact-page">
-    <contact-filter></contact-filter>
-    <!-- <contact-details *ngIf="selectedContact;else contactList"></contact-details> -->
-
-    <!-- <ng-template #contactList> -->
-
-    <button routerLink="edit">Add new contact</button>
-    <contact-list (remove)="onRemoveContact($event)" [contacts]="contacts$ | async"></contact-list>
-    <!-- </ng-template> -->
-
+<section class="contact-index">
+    <div class="main-container">
+        <contact-filter></contact-filter>
+        <button routerLink="edit">Add new contact</button>
+        <contact-list (remove)="onRemoveContact($event)" [contacts]="contacts$ | async"></contact-list>
+    </div>
     <router-outlet></router-outlet>
 </section>
-
-<!-- (selectedContact)="onSelectContact($event)" -->
-
-<!-- [contactId]="selectedContact" -->

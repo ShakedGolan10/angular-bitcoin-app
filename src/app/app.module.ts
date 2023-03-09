@@ -18,6 +18,8 @@ import { TransferFundComponent } from './cmps/transfer-fund/transfer-fund.compon
 import { TransferListComponent } from './cmps/transfer-list/transfer-list.component';
 import { TransferPreviewComponent } from './cmps/transfer-preview/transfer-preview.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,7 @@ import { TransferPreviewComponent } from './cmps/transfer-preview/transfer-previ
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,7 +6,7 @@
             <h1 class="logo" routerLink="/">Mr.Bitcon</h1>
 
             <nav>
-                <a class="contact-btn" routerLink="/contact"> Go to your Contacts!</a>
+                <button class="contact-btn" (click)="goToContacts($event)"> Go to your Contacts!</button>
                 <button (click)="onOpenModal()" *ngIf="!user$">Login/Signup</button>
                 <button (click)="onLogout()" *ngIf="user$">Logout</button>
 

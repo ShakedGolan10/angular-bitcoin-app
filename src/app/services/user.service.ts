@@ -1,8 +1,8 @@
+// @ts-nocheck
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Contact } from '../models/contact.model';
 import { cradentials, emptyUser, Move, UserModel } from '../models/user-model';
-import * as sjcl from 'sjcl'
 import * as CryptoJS from 'crypto-js'
 
 
@@ -27,11 +27,17 @@ export class UserService {
   }
 
 
-  public checkLoggedinUser() {
-    if (sessionStorage.length) {
+  public checkLoggedinUser(): boolean {
+    let users = this.getUsers()
+    let user = this.getUser()
+    if (user) {
+      var checkIfUserExist = users.find(currUser => currUser._id === user._id)
+    }
+    if (checkIfUserExist) {
       let user = sessionStorage.getItem(this.STORAGE_KEY_LOGGEDIN_USER)
       this._user$.next(JSON.parse(user!))
-    }
+      return true
+    } else return false
   }
 
 
@@ -44,6 +50,7 @@ export class UserService {
     const loggedInUser = users.find(currUser => ((currUser.userName === user.userName) &&
       (CryptoJS.AES.decrypt(currUser.password, this.key, { iv: this.iv }).toString(CryptoJS.enc.Utf8) === user.password)))
     if (loggedInUser) {
+      delete loggedInUser!.password
       this.saveLocalUser(loggedInUser)
     }
     else {
