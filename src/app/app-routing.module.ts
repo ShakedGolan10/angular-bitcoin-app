@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactEditComponent } from './cmps/contact-edit/contact-edit.component';
+import { StatsComponent } from './cmps/stats/stats.component';
 import { environment } from './environments/environment';
 import { AuthGuard } from './guards/auth.guard';
 import { ContactResolver } from './services/contact.resolver';
@@ -18,6 +19,7 @@ const routes: Routes = [
     ]
   },
   { path: 'contact/:id', component: ContactDetailsComponent, resolve: { contact: ContactResolver } },
+  { path: 'stats', component: StatsComponent },
 
 
 

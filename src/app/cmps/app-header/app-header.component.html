@@ -1,0 +1,17 @@
+<header>
+    <div class="main-container">
+        <div class="header-content">
+            <img src="../../../assets/imgs/logo.png" class="logo" routerLink="/" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}" />
+            <nav>
+                <span routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</span>
+                <span (click)="goToContacts()">Contact</span>
+                <span routerLink="/stats" routerLinkActive="active">Stats</span>
+                <span (click)="onOpenModal()" *ngIf="!user$">Login/Signup</span>
+                <span (click)="onLogout()" *ngIf="user$">Logout</span>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<login-signup *ngIf="authModal" (close)="onCloseModal()"></login-signup>

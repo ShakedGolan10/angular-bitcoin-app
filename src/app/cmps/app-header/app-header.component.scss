@@ -1,0 +1,43 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/layout";
+
+header {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    padding: 10px 0;
+    background-color: #000235;
+    color: white;
+    font-size: 17px;
+    position: sticky;
+    top: 0;
+
+    img {
+        width: 40px;
+    }
+
+    .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo {
+            cursor: pointer;
+        }
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+
+        span {
+            cursor: pointer;
+
+            &.active {
+                color: orange;
+            }
+        }
+    }
+
+}

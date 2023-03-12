@@ -1,21 +1,10 @@
 <section class="main-layout">
 
     <header class="full">
-
-        <section class="main-layout">
-            <h1 class="logo" routerLink="/">Mr.Bitcon</h1>
-
-            <nav>
-                <button class="contact-btn" (click)="goToContacts($event)"> Go to your Contacts!</button>
-                <button (click)="onOpenModal()" *ngIf="!user$">Login/Signup</button>
-                <button (click)="onLogout()" *ngIf="user$">Logout</button>
-
-            </nav>
-        </section>
+        <app-header></app-header>
     </header>
 
-    <main>
-        <login-signup *ngIf="authModal" (close)="onCloseModal()"></login-signup>
+    <main class="full">
         <router-outlet></router-outlet>
     </main>
 

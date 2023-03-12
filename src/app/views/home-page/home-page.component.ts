@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { UserModel } from 'src/app/models/user-model';
 import { BitCoinService } from 'src/app/services/bitcoin.service';
 import { UserService } from 'src/app/services/user.service';
@@ -17,7 +17,7 @@ export class HomePageComponent implements OnInit {
   user$!: UserModel
 
   ngOnInit(): void {
-    this.bitcoinRate = this.bitcoinService.getRate()
+    this.bitcoinRate$ = this.bitcoinService.getRateStream()
     this.subscription = this.userService.user$.subscribe(user => this.user$ = user)
     this.userService.checkLoggedinUser()
     console.log(this.user$)
@@ -25,7 +25,7 @@ export class HomePageComponent implements OnInit {
 
 
 
-  bitcoinRate!: any
+  bitcoinRate$!: Observable<string>
 
 
 

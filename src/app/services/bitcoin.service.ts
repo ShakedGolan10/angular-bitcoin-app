@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, of, switchMap, tap, timer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,17 +10,48 @@ export class BitCoinService {
   constructor(private http: HttpClient) { }
 
   public getRate() {
-
-    let bitcoinRate = localStorage.getItem('bitcoinRateDB')
-    if (!bitcoinRate) return this.http.get<{ answer: number }>('https://blockchain.info/tobtc?currency=USD&value=1')
-      .pipe(
-        map((res) => {
-          localStorage.setItem('bitcoinRateDB', JSON.stringify(res.answer))
-
-          return res.answer
-        })
-      )
-    else return bitcoinRate
+    const url = 'https://blockchain.info/tobtc?currency=USD&value=1'
+    return this.getResult('RATE', url)
   }
 
+  public getRateStream() {
+    return timer(0, 1000 * 60 * 15).pipe(
+      switchMap(() => this.getRate())
+    )
+  }
+
+  public getMarketPrice() {
+    const url = 'https://api.blockchain.info/charts/market-price?timespan=5months&format=json&cors=true'
+    return this.getResult('MARKET_PRICE', url)
+  }
+
+  public getConfirmedTransactions() {
+
+  }
+
+  getAvgBlockSize() {
+    const url = 'https://api.blockchain.info/charts/avg-block-size?timespan=1months&format=json&cors=true'
+    return this.getResult('AVG_BLOCK_SIZE', url)
+  }
+
+  getResult(type: string, url: string) {
+    const result = loadFromStorage(type)
+    if (result) return of(result)
+    return this.http.get<any>(url)
+      .pipe(
+        tap(res => saveToStorage(type, res)),
+      )
+  }
+
+}
+
+
+function saveToStorage(key: string, value: any) {
+  const data: any = JSON.stringify(value) || null
+  localStorage.setItem(key, data)
+}
+
+function loadFromStorage(key: string) {
+  let data = localStorage.getItem(key)
+  return data ? JSON.parse(data) : undefined
 }

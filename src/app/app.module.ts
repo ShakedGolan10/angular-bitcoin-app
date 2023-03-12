@@ -17,6 +17,10 @@ import { UserMsgComponent } from './cmps/user-msg/user-msg.component';
 import { TransferFundComponent } from './cmps/transfer-fund/transfer-fund.component';
 import { TransferListComponent } from './cmps/transfer-list/transfer-list.component';
 import { TransferPreviewComponent } from './cmps/transfer-preview/transfer-preview.component';
+import { AppHeaderComponent } from './cmps/app-header/app-header.component';
+import { StatsComponent } from './cmps/stats/stats.component';
+import { AvgMonthsChartComponent } from './cmps/avg-months-chart/avg-months-chart.component';
+import { MarketPriceChartComponent } from './cmps/market-price-chart/market-price-chart.component';
 
 
 
@@ -35,6 +39,10 @@ import { TransferPreviewComponent } from './cmps/transfer-preview/transfer-previ
     TransferFundComponent,
     TransferListComponent,
     TransferPreviewComponent,
+    AppHeaderComponent,
+    StatsComponent,
+    AvgMonthsChartComponent,
+    MarketPriceChartComponent,
   ],
   imports: [
     BrowserModule,

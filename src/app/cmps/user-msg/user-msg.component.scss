@@ -1,0 +1,71 @@
+$modal-width: 400px;
+$modal-height: 200px;
+$modal-bg-color: #fff;
+$shake-duration: 0.7s;
+$shake-amplitude: 10px;
+
+section {
+
+    width: $modal-width;
+    height: $modal-height;
+    background-color: $modal-bg-color;
+    border-radius: 10px;
+    position: fixed;
+    top: 35%;
+    left: 35%;
+    // transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    animation: shake $shake-duration 1ms;
+
+
+
+    display: flex;
+    background-color: rgb(203, 180, 163);
+    z-index: 99;
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-$shake-amplitude);
+    }
+
+    40% {
+        transform: translateX($shake-amplitude);
+    }
+
+    60% {
+        transform: translateX(-$shake-amplitude);
+    }
+
+    80% {
+        transform: translateX($shake-amplitude);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.back-screen {
+    background-color: #000;
+    cursor: pointer;
+    height: 100vh;
+    left: 0;
+    opacity: 50%;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 98;
+}
+
+span {
+    font-size: 30px;
+}
